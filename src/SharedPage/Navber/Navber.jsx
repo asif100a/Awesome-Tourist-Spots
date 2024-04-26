@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuthContext from "../../Hooks/useAuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navber = () => {
-    const { user } = useAuthContext();
-    console.log(user)
+    const { user, signOutUser } = useAuthContext();
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -11,6 +11,11 @@ const Navber = () => {
         <li><NavLink to={'/add_tourists_spot'}>Add Tourists Spot</NavLink></li>
         <li><NavLink to={'/my_list'}>My List</NavLink></li>
     </>
+
+    const handleSingOut = () => {
+        signOutUser()
+            toast.success('You have signed out successfully');
+    };
 
     return (
         <div className="navbar bg-base-100">
@@ -52,7 +57,7 @@ const Navber = () => {
                                 </ul>
                             </div>
 
-                            <button className="btn">Sign out</button>
+                            <button onClick={handleSingOut} className="btn">Sign out</button>
 
                         </> :
                         <>
@@ -61,6 +66,7 @@ const Navber = () => {
                         </>
                 }
             </div>
+            <Toaster />
         </div>
     );
 };
