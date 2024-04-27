@@ -7,9 +7,9 @@ const Navber = () => {
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/all_tourists_spot'}>All Tourists Spot</NavLink></li>
-        <li><NavLink to={'/add_tourists_spot'}>Add Tourists Spot</NavLink></li>
-        <li><NavLink to={'/my_list'}>My List</NavLink></li>
+        <li><NavLink to={'/all_tourists_spot'}>All Tourist Spots</NavLink></li>
+        <li><NavLink to={'/add_tourists_spot'}>Add Tourist Spots</NavLink></li>
+        <li><NavLink to={'/my_list'}>My Lists</NavLink></li>
     </>
 
     const handleSingOut = () => {
@@ -18,7 +18,7 @@ const Navber = () => {
     };
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 border">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +28,7 @@ const Navber = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="text-2xl font-medium">Awesome Tourist Spots</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
