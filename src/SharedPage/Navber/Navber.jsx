@@ -1,21 +1,35 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuthContext from "../../Hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import "./Navber.css";
+import { useEffect, useState } from "react";
+import userDefaultImg from "../../assets/default-avatar-profile-icon-social-media-user-photo-in-flat-style-vector.jpg"
 
 const Navber = () => {
     const { user, signOutUser } = useAuthContext();
+    console.log(user)
+    const [userImg, setUserImg] = useState(userDefaultImg);
 
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/all_tourists_spot'}>All Tourist Spots</NavLink></li>
         <li><NavLink to={'/add_tourists_spot'}>Add Tourist Spots</NavLink></li>
+        <li><NavLink to={'/all_tourists_spot'}>All Tourist Spots</NavLink></li>
         <li><NavLink to={'/my_list'}>My Lists</NavLink></li>
     </>
 
     const handleSingOut = () => {
         signOutUser()
-            toast.success('You have signed out successfully');
+        toast.success('You have signed out successfully');
     };
+
+    useEffect(() => {
+        if (user?.photoURL?.includes('http')) {
+            setUserImg(user?.photoURL);
+        }
+        else {
+            setUserImg(userDefaultImg)
+        }
+    }, [user?.photoURL])
 
     return (
         <div className="navbar bg-base-100 border">
@@ -39,21 +53,14 @@ const Navber = () => {
                 {
                     user ?
                         <>
-                            <div className="dropdown dropdown-end">
+                            <div className="profile">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        <img alt="Tailwind CSS Navbar component" src={userImg} className="" />
                                     </div>
                                 </div>
-                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li>
-                                        <a className="justify-between">
-                                            Profile
-                                            <span className="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                <ul tabIndex={0} className="profile-name mt-3 z-[1] p-2 shadow bg-base-100 rounded-md w-52">
+                                    <li>{user?.displayName}</li>
                                 </ul>
                             </div>
 

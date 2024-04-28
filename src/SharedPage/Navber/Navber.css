@@ -1,0 +1,13 @@
+.profile {
+    position: relative;
+}
+.profile-name {
+    position: absolute;
+    visibility: hidden;
+    left: -60px;
+    top: 36px
+}
+.profile:hover .profile-name {
+    transition-delay: 300ms;
+    visibility: visible;
+}

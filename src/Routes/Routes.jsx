@@ -18,11 +18,11 @@ const routes = createBrowserRouter([
                 index: true,
                 element: <Home />
             }, {
-                path: '/all_tourists_spot',
-                element: <AllTouristsSpot />
-            }, {
                 path: '/add_tourists_spot',
                 element: <AddTouristsSpot />
+            }, {
+                path: '/all_tourists_spot',
+                element: <AllTouristsSpot />
             }, {
                 path: '/my_list',
                 element: <MyList />

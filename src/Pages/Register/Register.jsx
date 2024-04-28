@@ -4,11 +4,13 @@ import useAuthContext from "../../Hooks/useAuthContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
     const navigate = useNavigate();
     const { registerUser } = useAuthContext();
     const [passwordError, setPasswordError] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
     const {
         register,
@@ -26,6 +28,7 @@ const Register = () => {
         } = data;
 
         setPasswordError("");
+        setConfirmPasswordError("");
 
         if (password.length < 6) {
             return setPasswordError('You should provide at least 6 character of password');
@@ -36,11 +39,25 @@ const Register = () => {
         else if(!/[a-z]/.test(password)) {
             return setPasswordError('You should provide at least 1 character of Lowercase')
         }
+        else if(password !== confirmPassword) {
+            return setConfirmPasswordError('Confirm password must be same with the password');
+        }
 
         // Register user in the firebase
         registerUser(email, password)
             .then(crediential => {
                 console.log(crediential?.user);
+                updateProfile(crediential.user, {
+                    displayName: name,
+                    photoURL: photo_url
+                })
+                    .then(res => {
+                        console.log(res)
+                    })
+                    .catch(err => {
+                        console.error(err.message);
+                    })
+
                 if(crediential.user) {
                     toast.success('You have registered successfully');
                     setTimeout(() => {
@@ -127,6 +144,7 @@ const Register = () => {
                             {...register("confirmPassword", { required: true })}
                         />
                         {errors.confirmPassword && <span className="text-red-600">This field is required</span>}
+                        {<span className="text-red-600">{confirmPasswordError}</span>}
                     </div>
                     <button type="submit" className="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2">Register now</button>
                 </form>
