@@ -3,7 +3,8 @@ import useAuthContext from "../../Hooks/useAuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import "./Navber.css";
 import { useEffect, useState } from "react";
-import userDefaultImg from "../../assets/default-avatar-profile-icon-social-media-user-photo-in-flat-style-vector.jpg"
+import userDefaultImg from "../../assets/default-avatar-profile-icon-social-media-user-photo-in-flat-style-vector.jpg";
+import logo from '../../assets/Add a heading (1).png'
 
 const Navber = () => {
     const { user, signOutUser } = useAuthContext();
@@ -42,7 +43,9 @@ const Navber = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="text-2xl font-medium">Awesome Tourist Spots</a>
+                <Link to={'/'} className="text-2xl font-medium flex justify-center items-center gap-2">
+                    <img src={logo} alt="Logo" className="w-16 h-16" />
+                    <span>Awesome Tourist Spots</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -7,6 +7,7 @@ import AddTouristsSpot from "../Pages/AddTouristsSpot/AddTouristsSpot";
 import MyList from "../Pages/MyList/MyList";
 import SignIn from "../Pages/SignIn/SignIn";
 import Register from "../Pages/Register/Register";
+import TouristCardDetails from "../Pages/TouristCardDetails/TouristCardDetails";
 
 const routes = createBrowserRouter([
     {
@@ -18,11 +19,16 @@ const routes = createBrowserRouter([
                 index: true,
                 element: <Home />
             }, {
+                path: '/tourist_card_details/:id',
+                element: <TouristCardDetails />,
+                loader: ({params}) => fetch(`http://localhost:5000/touristSpotCards/${params.id}`)
+            }, {
                 path: '/add_tourists_spot',
                 element: <AddTouristsSpot />
             }, {
                 path: '/all_tourists_spot',
-                element: <AllTouristsSpot />
+                element: <AllTouristsSpot />,
+                loader: () => fetch('http://localhost:5000/addTouristSpot')
             }, {
                 path: '/my_list',
                 element: <MyList />
