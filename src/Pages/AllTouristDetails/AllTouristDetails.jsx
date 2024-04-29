@@ -1,4 +1,12 @@
 import { useLoaderData } from "react-router-dom";
+import { BsPersonCheck } from "react-icons/bs";
+import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { FaLandmarkFlag } from "react-icons/fa6";
+import { TbCurrentLocation } from "react-icons/tb";
+import { FaSackDollar } from "react-icons/fa6";
+import { IoIosPeople } from "react-icons/io";
+import { FcOvertime } from "react-icons/fc";
+import { IoTimerOutline } from "react-icons/io5";
 
 const AllTouristDetails = () => {
     const travellers = "Traveller's";
@@ -16,78 +24,42 @@ const AllTouristDetails = () => {
                     <p></p>
                     <p></p>
 
-                    <ul className="text-sm text-gray-600 mb-6 mt-6">
+                    <ul className="text-sm text-gray-600 space-y-3 mb-6 mt-6">
                         <li className="mb-2 flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Traveller : {name}
+                            <BsPersonCheck className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Traveller : <span className="font-normal">{name}</span></span>
                         </li>
                         <li className="mb-2 flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            {travellers} email : {email}
+                            <MdOutlineMarkEmailRead className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">{travellers} email : <span className="font-normal">{email}</span></span>
                         </li>
                         <li className="mb-2 flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Country : {country_name}
+                            <FaLandmarkFlag className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Country : <span className="font-normal">{country_name}</span></span>
                         </li>
                         <li className="mb-2 flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Location : {location}
+                            <TbCurrentLocation className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Location : <span className="font-normal">{location}</span></span>
                         </li>
                         <li className="flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Average cost : {average_cost}
+                            <FaSackDollar className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Average cost : <span className="font-normal">{average_cost}</span></span>
                         </li>
                         <li className="flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Total visitors per year : {total_visitor}
+                            <IoIosPeople className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Total visitors per year : <span className="font-normal">{total_visitor}</span></span>
                         </li>
                         <li className="flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Travel season : {season}
+                            <FcOvertime className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Travel season : <span className="font-normal">{season}</span></span>
                         </li>
                         <li className="flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Travel time : {travel_time}
+                            <IoTimerOutline className="mr-2 w-5 h-5" />
+                            <span className="text-base font-medium">Travel time : <span className="font-normal">{travel_time}</span></span>
                         </li>
-                        <li className="flex items-center">
-                            <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Description on tourist spot : {description}
+                        <li className="flex items-start flex-col text-base pt-3 pr-6">
+                            <span className="font-medium mb-2">Description on tourist spot :</span> 
+                            <span>{description}</span>
                         </li>
                     </ul>
                 </div>

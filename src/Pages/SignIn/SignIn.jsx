@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuthContext from "../../Hooks/useAuthContext";
 import toast, { Toaster } from 'react-hot-toast';
 import { FcGoogle } from "react-icons/fc";
@@ -9,6 +9,7 @@ import { useState } from "react";
 const SignIn = () => {
     const donNot = "Don't";
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { signInUser, googleSignIn } = useAuthContext();
     const [emailError, setEmailError] = useState("");
@@ -58,7 +59,12 @@ const SignIn = () => {
                 if (crediential.user) {
                     toast.success('You have signed in successfully');
                     setTimeout(() => {
-                        navigate('/');
+                        if(location.state) {
+                            navigate(location.state);
+                        }
+                        else{
+                            navigate('/');
+                        }
                     }, 3000);
                 }
             })

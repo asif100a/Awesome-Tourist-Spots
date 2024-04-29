@@ -9,6 +9,7 @@ import SignIn from "../Pages/SignIn/SignIn";
 import Register from "../Pages/Register/Register";
 import TouristCardDetails from "../Pages/TouristCardDetails/TouristCardDetails";
 import AllTouristDetails from "../Pages/AllTouristDetails/AllTouristDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -21,22 +22,22 @@ const routes = createBrowserRouter([
                 element: <Home />
             }, {
                 path: '/tourist_card_details/:id',
-                element: <TouristCardDetails />,
+                element: <PrivateRoute><TouristCardDetails /></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/touristSpotCards/${params.id}`)
             }, {
                 path: '/add_tourists_spot',
-                element: <AddTouristsSpot />
+                element: <PrivateRoute><AddTouristsSpot /></PrivateRoute>
             }, {
                 path: '/all_tourists_spot',
                 element: <AllTouristsSpot />,
                 loader: () => fetch('http://localhost:5000/addTouristSpot')
             }, {
                 path: '/all_tourist_details/:id',
-                element: <AllTouristDetails />,
+                element: <PrivateRoute><AllTouristDetails /></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/addTouristSpot/${params.id}`)
             }, {
                 path: '/my_list',
-                element: <MyList />
+                element: <PrivateRoute><MyList /></PrivateRoute>,
             }, {
                 path: 'sign_in',
                 element: <SignIn />
