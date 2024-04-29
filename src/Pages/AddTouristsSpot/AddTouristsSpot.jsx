@@ -203,7 +203,7 @@ const AddTouristsSpot = () => {
                         </div>
 
                         <textarea
-                            className="w-full input input-bordered p-4"
+                            className="w-full textarea textarea-bordered p-4"
                             name="description"
                             placeholder="Write a short description on your tourist spot..."
                             rows="6"
