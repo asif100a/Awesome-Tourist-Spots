@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const MyList = () => {
     const { user } = useAuthContext();
 
     const [datas, setDatas] = useState([]);
+    const [defaultValue, setDefaultValue] = useState({});
+    const [defaultSeason, setDefaultSeason] = useState(defaultValue.season);
+    const [defaultTravelTime, setDefaultTravelTime] = useState(defaultValue.travel_time);
+    const [updateId, setUpdateId] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:5000/myTouristSpot/${user?.email}`)
@@ -23,53 +28,66 @@ const MyList = () => {
         formState: { errors },
     } = useForm();
 
+    // Show input modal----------
+    const textRef = useRef();
+
+    const handleShowModal = (data) => {
+        textRef.current.classList.remove('hidden');
+        setDefaultValue(data);
+        setUpdateId(data?._id);
+    };
+
+    // Hide input modal----------
+    const handleRemoveModal = () => {
+        textRef.current.classList.add('hidden');
+    };
+
+    // Set default selected value in the select field
+    const handleDefaultSeason = (e) => {
+        setDefaultSeason(e.target.value);
+    };
+    const handleDefaultTravelTime = (e) => {
+        setDefaultTravelTime(e.target.value);
+    };
+
     const onSubmit = (data, e) => {
         const {
             tourist_spot_name,
             img_url,
             location,
-            country,
+            country_name,
             average_cost,
-            total_visitors,
+            total_visitor,
             description,
         } = data;
-
-        console.log(data)
 
         const season = e.target.season.value;
         const travel_time = e.target.travel_time.value;
 
-        const userTouristSpot = { tourist_spot_name, img_url, country, location, average_cost, total_visitors, season, travel_time, description };
+        const userTouristSpot = { tourist_spot_name, img_url, country_name, location, average_cost, total_visitor, season, travel_time, description };
 
-        // // Send data to the backend
-        // fetch('http://localhost:5000/addTouristSpot', {
-        //     method: "POST",
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(userTouristSpot)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         if (data.insertedId) {
-        //             Swal.fire({
-        //                 title: 'Successful',
-        //                 text: 'You have added tourist spot successfully',
-        //                 icon: 'success',
-        //                 confirmButtonText: 'close'
-        //             })
-        //             resetField("name");
-        //             resetField("email");
-        //             resetField("img_url");
-        //             resetField("tourist_spot_name");
-        //             resetField("country_name");
-        //             resetField("location");
-        //             resetField("average_cost");
-        //             resetField("total_visitor");
-        //             resetField("description");
-        //         }
-        //     });
+        console.log(userTouristSpot)
+
+        // Send data to the backend
+        fetch(`http://localhost:5000/addTouristSpot/${updateId}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userTouristSpot)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Successful',
+                        text: 'You have updated tourist spot successfully',
+                        icon: 'success',
+                        confirmButtonText: 'close'
+                    });
+                }
+            });
 
 
     };
@@ -82,10 +100,119 @@ const MyList = () => {
     //             console.log(data);
     //         });
     // };
+    console.log(defaultValue.total_visitor)
 
     return (
-        <div>
+        <div className="relative h-screen">
             <h1>My List section</h1>
+
+                <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center z-10">
+                    <div className="modal-box w-[32rem]">
+                        <h3 className="font-bold text-2xl text-center pb-3">Update your tourist spot</h3>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="tourist_spot_name">Tourist spot name</label>
+                                    <input
+                                        type="text"
+                                        name="tourist_spot_name"
+                                        defaultValue={defaultValue.tourist_spot_name}
+                                        className="input input-bordered input-secondary w-full "
+                                        {...register("tourist_spot_name")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="img_url">Touist spot image url</label>
+                                    <input
+                                        type="text"
+                                        name="img_url"
+                                        defaultValue={defaultValue.img_url}
+                                        className="input input-bordered input-primary w-full "
+                                        {...register("img_url")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="location">Tourist spot location</label>
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        defaultValue={defaultValue.location}
+                                        className="input input-bordered input-accent w-full "
+                                        {...register("location")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="country_name">Country name</label>
+                                    <input
+                                        type="text"
+                                        name="country_name"
+                                        defaultValue={defaultValue.country_name} 
+                                        className="input input-bordered input-warning w-full "
+                                        {...register("country_name")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="average_cost">Average cost</label>
+                                    <input
+                                        type="text"
+                                        name="average_cost" 
+                                        defaultValue={defaultValue.average_cost}
+                                        className="input input-bordered input-info w-full "
+                                        {...register("average_cost")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="total_visitor">Total visitors per year</label>
+                                    <input
+                                        type="text"
+                                        name="total_visitor"
+                                        defaultValue={defaultValue.total_visitor}
+                                        className="input input-bordered input-success w-full "
+                                        {...register("total_visitor")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <h5>Choose a season</h5>
+                                    <select name="season" value={defaultSeason} onChange={handleDefaultSeason} className="select select-bordered w-full">
+                                        <option value={'summer'}>Summer</option>
+                                        <option value={'autumn'}>Autumn</option>
+                                        <option value={'winter'}>Winter</option>
+                                        <option value={'spring'}>Spring</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <h5>Choose a travel time</h5>
+                                    <select name="travel_time" value={defaultTravelTime} onChange={handleDefaultTravelTime}  className="select select-bordered w-full">
+                                        <option value={'7_days'}>7 days</option>
+                                        <option value={'10_days'}>10 days</option>
+                                        <option value={'15_days'}>15 days</option>
+                                        <option value={'18_days'}>18 days</option>
+                                        <option value={'21_days'}>21 days</option>
+                                        <option value={'1_month'}>1 month</option>
+                                        <option value={'2_months'}>2 months</option>
+                                        <option value={'3_months'}>3 months</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="description">Short description</label>
+                                    <textarea
+                                        name="description"
+                                        className="textarea textarea-bordered"
+                                        defaultValue={defaultValue.description}
+                                        {...register("description")}
+                                    ></textarea>
+                                </div>
+                                <div className="text-center mt-3">
+                                    <button className="btn w-32 bg-green-500 text-white">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div className="text-center mt-3">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button onClick={handleRemoveModal} className="btn bg-red-600 text-white">Exit</button>
+                        </div>
+                    </div>
+                </div>
 
             <div>
                 <table className="table">
@@ -128,114 +255,8 @@ const MyList = () => {
                                 <td>{data?.average_cost}</td>
                                 <td>
                                     {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                    <button className="btn" >Update</button>
-                                    <dialog className="">
-                                        <div className="modal-box">
-                                            <h3 className="font-bold text-lg">Hello!</h3>
-                                            <form onSubmit={handleSubmit(onSubmit)}>
-                                                <div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="tourist_spot_name">Tourist spot name</label>
-                                                        <input
-                                                            type="text"
-                                                            name="tourist_spot_name"
-                                                            placeholder="Enter tourist spot name"
-                                                            className="input input-bordered input-secondary w-full max-w-xs"
-                                                            {...register("tourist_spot_name", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="img_url">Touist spot image url</label>
-                                                        <input
-                                                            type="text"
-                                                            name="img_url"
-                                                            placeholder="Enter tourist spot image url"
-                                                            className="input input-bordered input-primary w-full max-w-xs"
-                                                            {...register("img_url", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="location">Tourist spot location</label>
-                                                        <input
-                                                            type="text"
-                                                            name="location"
-                                                            placeholder="Enter tourist spot location"
-                                                            className="input input-bordered input-accent w-full max-w-xs"
-                                                            {...register("location", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="country_name">Country name</label>
-                                                        <input
-                                                            type="text"
-                                                            name="country"
-                                                            placeholder="Enter country name" className="input input-bordered input-warning w-full max-w-xs"
-                                                            {...register("country", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="average_cost">Average cost</label>
-                                                        <input
-                                                            type="text"
-                                                            name="average_cost" placeholder="Enter average cost"
-                                                            className="input input-bordered input-info w-full max-w-xs"
-                                                            {...register("average_cost", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="total_visitors">Total visitors per year</label>
-                                                        <input
-                                                            type="text"
-                                                            name="total_visitors"
-                                                            placeholder="Enter total visitors per year"
-                                                            className="input input-bordered input-success w-full max-w-xs"
-                                                            {...register("total_visitors", { required: true })}
-                                                        />
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <h5>Choose a season</h5>
-                                                        <select name="season" className="select select-bordered w-full">
-                                                            <option value={'summer'}>Summer</option>
-                                                            <option value={'autumn'}>Autumn</option>
-                                                            <option value={'winter'}>Winter</option>
-                                                            <option value={'spring'}>Spring</option>
-                                                        </select>
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <h5>Choose a travel time</h5>
-                                                        <select name="travel_time" className="select select-bordered w-full">
-                                                            <option value={'7_days'}>7 days</option>
-                                                            <option value={'10_days'}>10 days</option>
-                                                            <option value={'15_days'}>15 days</option>
-                                                            <option value={'18_days'}>18 days</option>
-                                                            <option value={'21_days'}>21 days</option>
-                                                            <option value={'1_month'}>1 month</option>
-                                                            <option value={'2_months'}>2 months</option>
-                                                            <option value={'3_months'}>3 months</option>
-                                                        </select>
-                                                    </div>
-                                                    <div className="flex flex-col gap-2 mt-3">
-                                                        <label htmlFor="description">Short description</label>
-                                                        <textarea
-                                                            name="description"
-                                                            className="textarea textarea-bordered"
-                                                            placeholder="Write short description"
-                                                            {...register("description", { required: true })}
-                                                        ></textarea>
-                                                    </div>
-                                                    <div>
-                                                        <button className="btn bg-green-500 text-white">Update</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <div className="modal-action">
-                                                <form method="dialog" className="flex gap-6">
-                                                    {/* if there is a button in form, it will close the modal */}
-                                                    <button className="btn bg-red-600 text-white">Exit</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </dialog>
+                                    <button onClick={() => handleShowModal(data)} className="btn" >Update</button>
+
                                 </td>
                                 <td>
                                     <button className="btn btn-ghost btn-xs">Delete</button>
@@ -245,6 +266,7 @@ const MyList = () => {
                     </tbody>
                 </table>
             </div>
+            
         </div>
     );
 };
