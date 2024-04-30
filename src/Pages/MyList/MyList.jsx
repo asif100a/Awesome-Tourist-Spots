@@ -8,8 +8,8 @@ const MyList = () => {
 
     const [datas, setDatas] = useState([]);
     const [defaultValue, setDefaultValue] = useState({});
-    const [defaultSeason, setDefaultSeason] = useState(defaultValue.season);
-    const [defaultTravelTime, setDefaultTravelTime] = useState(defaultValue.travel_time);
+    const [defaultSeason, setDefaultSeason] = useState("");
+    const [defaultTravelTime, setDefaultTravelTime] = useState("");
     const [updateId, setUpdateId] = useState(null);
 
     useEffect(() => {
@@ -24,8 +24,6 @@ const MyList = () => {
     const {
         register,
         handleSubmit,
-        // resetField,
-        formState: { errors },
     } = useForm();
 
     // Show input modal----------
@@ -35,6 +33,8 @@ const MyList = () => {
         textRef.current.classList.remove('hidden');
         setDefaultValue(data);
         setUpdateId(data?._id);
+        setDefaultSeason(data?.season);
+        setDefaultTravelTime(data?.travel_time)
     };
 
     // Hide input modal----------
@@ -51,7 +51,7 @@ const MyList = () => {
     };
 
     const onSubmit = (data, e) => {
-        const {
+        let {
             tourist_spot_name,
             img_url,
             location,
@@ -60,6 +60,30 @@ const MyList = () => {
             total_visitor,
             description,
         } = data;
+
+        // Set default input if user do not change value
+        if(tourist_spot_name === "") {
+            tourist_spot_name = defaultValue?.tourist_spot_name;
+            console.log(tourist_spot_name);
+        }
+        if(img_url === "") {
+            img_url = defaultValue?.img_url;
+        }
+        if(location === "") {
+            location = defaultValue?.location;
+        }
+        if(country_name === "") {
+            country_name = defaultValue?.country_name;
+        }
+        if(average_cost === "") {
+            average_cost = defaultValue?.average_cost;
+        }
+        if(total_visitor === "") {
+            total_visitor = defaultValue?.total_visitor;
+        }
+        if(description === "") {
+            description = defaultValue?.description;
+        }
 
         const season = e.target.season.value;
         const travel_time = e.target.travel_time.value;
@@ -92,15 +116,6 @@ const MyList = () => {
 
     };
 
-    // // Update data in the server side
-    // const handleUpdate = () => {
-    //     fetch(``)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         });
-    // };
-    console.log(defaultValue.total_visitor)
 
     return (
         <div className="relative h-screen">
