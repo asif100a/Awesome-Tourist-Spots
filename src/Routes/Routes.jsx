@@ -10,6 +10,7 @@ import Register from "../Pages/Register/Register";
 import TouristCardDetails from "../Pages/TouristCardDetails/TouristCardDetails";
 import AllTouristDetails from "../Pages/AllTouristDetails/AllTouristDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import CountryCardDetails from "../Pages/CountryCardDetails/CountryCardDetails";
 
 const routes = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const routes = createBrowserRouter([
             }, {
                 path: '/my_list',
                 element: <PrivateRoute><MyList /></PrivateRoute>,
+            }, {
+                path: '/country_spots',
+                element: <CountryCardDetails />,
+                loader: () => fetch(`http://localhost:5000/touristSpotCards`),
             }, {
                 path: 'sign_in',
                 element: <SignIn />

@@ -16,13 +16,7 @@ const TouristSpot = () => {
                 setLoader(false)
             });
     }, []);
-
-    // if(spotCards.length === 0) {
-    //     setLoader(true);
-    // }
-    // if(spotCards.length > 0) {
-    //     setLoader(false)
-    // }
+    
 
     return (
         <div className="mt-16 relative">
