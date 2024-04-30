@@ -85,6 +85,7 @@ const MyList = () => {
             description = defaultValue?.description;
         }
 
+        // Get selected value from select field
         const season = e.target.season.value;
         const travel_time = e.target.travel_time.value;
 
@@ -114,6 +115,27 @@ const MyList = () => {
             });
 
 
+    };
+
+    // Handling Delete method
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/addTouristSpot/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if(data.deletedCount > 0) {
+                    Swal.fire({
+                        title: 'Successful',
+                        text: 'You have deleted tourist spot successfully',
+                        icon: 'success',
+                        confirmButtonText: 'close'
+                    });
+                    const remainingData = datas.filter(data => data?._id !== id);
+                    setDatas(remainingData);
+                }
+            })
     };
 
 
@@ -274,7 +296,7 @@ const MyList = () => {
 
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost btn-xs">Delete</button>
+                                    <button onClick={() => handleDelete(data?._id)} className="btn">Delete</button>
                                 </td>
                             </tr>)
                         }
