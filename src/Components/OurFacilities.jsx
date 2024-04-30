@@ -5,7 +5,7 @@ const OurFacilities = () => {
         <div className="mt-16">
             <h1 className="text-4xl font-bold text-center">You will be able to get from us-</h1>
 
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto w-fit">
                 {/* 1 */}
                 <div className="border-2 border-red-500 w-72 h-72 rounded-2xl rounded-t-full flex flex-col justify-center items-center gap-3 text-center">
                     <img src="https://i.ibb.co/z5rbqgN/destination-global-map-pin-travel-world-different-destinations-map-pins-512.webp" alt="Destination icon" className="w-16 h-16" />

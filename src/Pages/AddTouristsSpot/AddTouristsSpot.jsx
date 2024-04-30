@@ -66,7 +66,7 @@ const AddTouristsSpot = () => {
 
     return (
 
-        <section className="w-[70%] mx-auto p-4 shadow">
+        <section className="w-[90%] lg:w-[70%] mx-auto p-4 shadow">
             <div className="md:flex">
                 <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">Create New Location</h2>
             </div>

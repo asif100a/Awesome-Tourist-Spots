@@ -7,7 +7,7 @@ const TouristCounter = () => {
 
     return (
         <div className='mt-32'>
-            <h1 className='text-4xl font-bold text-start mb-12'>At a glance, our customers, destinations and tours-</h1>
+            <h1 className='text-4xl font-bold text-center md:text-start mb-12'>At a glance, our customers, destinations and tours-</h1>
             <section className="p-4 my-6 md:p-8 dark:bg-gray-100 dark:text-gray-800 border">
                 <div className="container grid grid-cols-1 gap-6 m-4 mx-auto md:m-0 md:grid-cols-2 xl:grid-cols-3">
                     <CountUp

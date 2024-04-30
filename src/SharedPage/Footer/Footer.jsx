@@ -9,9 +9,9 @@ const Footer = () => {
         <footer className="w-full text-gray-700 bg-gray-100 body-font mt-12">
             <div
                 className="container flex flex-col flex-wrap px-5 py-16 pb-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
-                <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+                <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-24 lg:mx-0 md:text-left mb-10 lg:mb-0">
                     <a className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
-                        <img src={webLogo} alt="Website logo" className="w-32 h-32" />
+                        <img src={webLogo} alt="Website logo" className="w-32 h-32 " />
                     </a>
                    <h1 className="mt-3 text-2xl font-semibold">Awesome Tourist Spots</h1>
                 </div>
@@ -60,7 +60,7 @@ const Footer = () => {
                     </div>
                     <div className="w-full px-4 lg:w-1/4 md:w-1/2">
                         <h2 className="mb-3 text-sm font-medium tracking-widest uppercase title-font">Social media links</h2>
-                        <nav className="mb-10 list-none">
+                        <nav className="mb-10 list-none mx-auto w-fit md:w-auto">
                             <li className="mt-3">
                                 <a className="text-gray-500 cursor-pointer hover:text-gray-900 flex gap-2"><FaSquareFacebook className="w-6 h-6 text-blue-500" /><span>Facebook</span></a>
                             </li>
@@ -77,7 +77,7 @@ const Footer = () => {
             </div>
             <div className="bg-gray-300">
                 <div className="container px-5 py-4 mx-auto">
-                    <p className="text-sm text-gray-700 capitalize xl:text-center">© 2024 All rights reserved by Awesome Tourist Spots</p>
+                    <p className="text-sm text-gray-700 capitalize text-center">© 2024 All rights reserved by Awesome Tourist Spots</p>
                 </div>
             </div>
         </footer>

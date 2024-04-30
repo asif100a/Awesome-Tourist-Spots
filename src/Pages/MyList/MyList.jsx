@@ -282,7 +282,7 @@ const MyList = () => {
             </div>
 
             <div>
-                <table className="table">
+                <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
@@ -295,43 +295,56 @@ const MyList = () => {
                     </thead>
                     <tbody>
                         {
-                            datas.map(data => <tr className="overflow-x-auto" key={data._id}>
+                            datas.map(data => <>
+                                <tr className="overflow-x-hidden" key={data._id}>
 
-                                {/* row 1 */}
-                                <td>
+                                    {/* row 1 */}
+                                    <td>
 
-                                    <div className="avatar">
-                                        <div className="mask rounded-sm w-16 h-16">
-                                            <img src={data.img_url} alt="Tourist spot" />
+                                        <div className="lg:avatar">
+                                            <div className="mask rounded-sm w-10 md:w-16 h-10 md:h-16">
+                                                <img src={data.img_url} alt="Tourist spot" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div>
-                                            <div className="font-bold">{data?.name}</div>
-                                            <div className="text-sm opacity-50">{data?.email}</div>
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center lg:gap-3">
+                                            <div className="w-10 lg:w-auto">
+                                                <div className="font-bold">{data?.name}</div>
+                                                <div className="text-sm opacity-50 hidden md:flex">{data?.email}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {data?.tourist_spot_name}
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">{data?.location}</span>
-                                </td>
-                                <td>{data?.average_cost}</td>
-                                <td>
-                                    {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                    <button onClick={() => handleShowModal(data)} className="btn" >Update</button>
+                                    </td>
+                                    <td>
+                                        {data?.tourist_spot_name}
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">{data?.location}</span>
+                                    </td>
+                                    <td>{data?.average_cost}</td>
+                                    <td className="hidden md:flex">
+                                        {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                        <button onClick={() => handleShowModal(data)} className="btn btn-sm" >Update</button>
 
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDelete(data?._id)} className="btn">Delete</button>
-                                </td>
-                            </tr>)
+                                    </td>
+                                    <td className="hidden md:flex">
+                                        <button onClick={() => handleDelete(data?._id)} className="btn btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr className="flex md:hidden">
+                                    <td>
+                                        <button onClick={() => handleShowModal(data)} className="btn btn-sm" >Update</button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDelete(data?._id)} className="btn btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                            </>)
                         }
                     </tbody>
                 </table>
+
+
+
             </div>
 
         </div>

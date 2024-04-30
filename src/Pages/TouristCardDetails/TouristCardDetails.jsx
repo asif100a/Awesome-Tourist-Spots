@@ -13,21 +13,18 @@ const TouristCardDetails = () => {
             <div className="max-w-full p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mt-6">
                 <div className="flex justify-between pb-4 border-bottom">
                     <div className="space-y-2">
-                        <img src={img_url} alt="" className="block min-w-[74rem] rounded-md max-h-[600px] dark:bg-gray-500" />
+                        <img src={img_url} alt="" className="block w-auto lg:min-w-[74rem] rounded-md h-auto lg:max-h-[600px] dark:bg-gray-500" />
                     </div>
                 </div>
-                <div className="flex gap-12 mt-3">
-                    <div className="space-y-2 w-3/5">
+                <div className="flex flex-col lg:flex-row gap-12 mt-3">
+                    <div className="space-y-2 w-full lg:w-3/5">
                         <h3 className="text-4xl font-semibold dark:text-violet-600 mb-3">{spot_name}</h3>
                         <p className="leading-snug dark:text-gray-600">{description}</p>
                     </div>
 
                         <section>
                             <div className="container max-w-full mx-auto  px-6">
-                                
-
                                 <div className="max-w-full md:max-w-6xl mx-auto my-3 md:px-8">
-                                    <div className="relative flex flex-col md:flex-row items-center">
                                         <div className=" my-8 relative z-0 rounded-lg shadow-lg md:-mr-4">
                                             <div className="py-6 bg-white text-black rounded-lg shadow-lg overflow-hidden">
                                                 <div className="block text-left text-sm sm:text-md max-w-sm  mt-2 text-black px-3">
@@ -57,8 +54,6 @@ const TouristCardDetails = () => {
                                             </div>
                                         </div>
                                         
-                                        
-                                    </div>
                                 </div>
                             </div>
                         </section>

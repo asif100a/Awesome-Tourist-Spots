@@ -11,18 +11,15 @@ import { IoTimerOutline } from "react-icons/io5";
 const AllTouristDetails = () => {
     const travellers = "Traveller's";
     const touristData = useLoaderData()
-    const { _id, name, email, img_url, tourist_spot_name, country_name, location, average_cost, total_visitor, season, travel_time, description } = touristData;
+    const { name, email, img_url, tourist_spot_name, country_name, location, average_cost, total_visitor, season, travel_time, description } = touristData;
 
     return (
         <div>
-            <div className="flex  bg-base-100 shadow-xl">
-                <img src={img_url} alt="Tourist spot image" className="w-1/2" />
+            <div className="flex flex-col lg:flex-row bg-base-100 shadow-xl">
+                <img src={img_url} alt="Tourist spot image" className="w-full lg:w-1/2" />
 
                 <div className="ml-8">
                     <h2 className="card-title mb-3">{tourist_spot_name}</h2>
-                    <p></p>
-                    <p></p>
-                    <p></p>
 
                     <ul className="text-sm text-gray-600 space-y-3 mb-6 mt-6">
                         <li className="mb-2 flex items-center">
