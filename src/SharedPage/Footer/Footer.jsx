@@ -2,7 +2,6 @@ import webLogo from "../../assets/Add a heading (1).png";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { SiInstagram } from "react-icons/si";
-import { FaGithub } from "react-icons/fa6";
 
 const Footer = () => {
     return (

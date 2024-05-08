@@ -4,6 +4,7 @@ import useAuthContext from "../Hooks/useAuthContext";
 
 const PrivateRoute = ({ children }) => {
     const { user, loader } = useAuthContext();
+    console.log(user)
     const location = useLocation();
     console.log(location);
 

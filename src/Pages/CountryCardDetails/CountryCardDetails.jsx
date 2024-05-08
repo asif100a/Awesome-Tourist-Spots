@@ -12,10 +12,10 @@ const CountryCardDetails = () => {
         const filteredData = touristSpotCards.filter(card => card?.country_name === location.state);
         setCardData(filteredData);
     }, [location?.state])
-    console.log(cardData)
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           
             {
                 cardData.map(card => (
                     <div key={card?._id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

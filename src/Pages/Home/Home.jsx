@@ -1,7 +1,6 @@
 import BannerSlider from "../../Components/BannerSlider";
 import CountryCard from "../../Components/CountryCard";
 import OurFacilities from "../../Components/OurFacilities";
-import TouristCard from "../../Components/TouristCard";
 import TouristCounter from "../../Components/TouristCounter";
 import TouristSpot from "../../Components/TouristSpot";
 

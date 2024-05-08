@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const MyList = () => {
     const { user } = useAuthContext();
+    console.log(user.email)
 
     const [datas, setDatas] = useState([]);
     const [defaultValue, setDefaultValue] = useState({});
@@ -13,9 +14,10 @@ const MyList = () => {
     const [updateId, setUpdateId] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myTouristSpot/${user?.email}`)
+        fetch(`https://assignment-10-server-side-lemon.vercel.app/myTouristSpot/${user?.email}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 setDatas(data);
             })
     }, [user?.email]);
@@ -94,7 +96,7 @@ const MyList = () => {
         console.log(userTouristSpot)
 
         // Send data to the backend
-        fetch(`http://localhost:5000/addTouristSpot/${updateId}`, {
+        fetch(`https://assignment-10-server-side-lemon.vercel.app/addTouristSpot/${updateId}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -111,6 +113,7 @@ const MyList = () => {
                         icon: 'success',
                         confirmButtonText: 'close'
                     });
+                    window.location.reload();
                 }
             });
 
@@ -136,7 +139,7 @@ const MyList = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/addTouristSpot/${id}`, {
+                fetch(`https://assignment-10-server-side-lemon.vercel.app/addTouristSpot/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

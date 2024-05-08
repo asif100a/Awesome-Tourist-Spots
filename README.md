@@ -16,8 +16,8 @@ My website name :
     website live url :
     ------------------
     The main feature of my website:-
+        * Responsiveness for mobile device
         * 
-        *
         *
         *
         *

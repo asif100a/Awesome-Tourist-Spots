@@ -24,25 +24,25 @@ const routes = createBrowserRouter([
             }, {
                 path: '/tourist_card_details/:id',
                 element: <PrivateRoute><TouristCardDetails /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/touristSpotCards/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-10-server-side-lemon.vercel.app/touristSpotCards/${params.id}`)
             }, {
                 path: '/add_tourists_spot',
                 element: <PrivateRoute><AddTouristsSpot /></PrivateRoute>
             }, {
                 path: '/all_tourists_spot',
                 element: <AllTouristsSpot />,
-                loader: () => fetch('http://localhost:5000/addTouristSpot')
+                loader: () => fetch('https://assignment-10-server-side-lemon.vercel.app/addTouristSpot')
             }, {
                 path: '/all_tourist_details/:id',
                 element: <PrivateRoute><AllTouristDetails /></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/addTouristSpot/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-10-server-side-lemon.vercel.app/addTouristSpot/${params.id}`)
             }, {
                 path: '/my_list',
                 element: <PrivateRoute><MyList /></PrivateRoute>,
             }, {
                 path: '/country_spots',
                 element: <CountryCardDetails />,
-                loader: () => fetch(`http://localhost:5000/touristSpotCards`),
+                loader: () => fetch(`https://assignment-10-server-side-lemon.vercel.app/touristSpotCards`),
             }, {
                 path: 'sign_in',
                 element: <SignIn />
