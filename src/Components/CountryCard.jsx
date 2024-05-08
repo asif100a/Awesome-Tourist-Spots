@@ -35,27 +35,32 @@ const CountryCard = () => {
         <>
             <Swiper
                 spaceBetween={100}
-                slidesPerView={3}
-                // centeredSlides={true}
+                centeredSlides={true}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
                 }}
-                // pagination={{
-                //     clickable: true,
-                // }}
-                // navigation={true}
                 modules={[Autoplay]}
                 className="mySwiper"
+                breakpoints={{
+                    320: {
+                        slidesPerView: 1,
+                        centeredSlides: true
+                    },
+                    768: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 3
+                    }
+                }}
             >
 
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-6 mx-auto w-fit ">
-
+                <div>
                     {
                         countryDatas.map(data => (
                             <SwiperSlide key={data?._id}>
-                                <Link to={`/country_spots`} state={data?.country_name}>
+                                <Link to={`/country_spots`} className="flex justify-center items-center" state={data?.country_name}>
                                     <div className="max-w-64 rounded-md dark:bg-gray-50 dark:text-gray-900 flex flex-col justify-center items-center hover:border p-2 mt-12">
                                         <img src={data?.img_url} alt="" className="object-cover object-center w-56 h-56 rounded-full border dark:bg-gray-500" />
                                         <div className="mt-1 mb-2 p-2 shadow-md rounded-lg text-center">
@@ -67,8 +72,6 @@ const CountryCard = () => {
                             </SwiperSlide>
                         ))
                     }
-
-
                 </div>
             </Swiper >
         </>
