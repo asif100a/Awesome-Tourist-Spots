@@ -1,0 +1,19 @@
+.banner-image{
+    height: 540px;
+}
+
+@media (min-width: 300px) and (max-width: 360px) {
+    .banner-image{
+        height: 540px;
+    }
+}
+@media (min-width: 361px) and (max-width: 580px) {
+    .banner-image{
+        height: 470px;
+    }
+}
+@media (min-width: 581px) and (max-width: 900px) {
+    .banner-image{
+        height: 480px;
+    }
+}

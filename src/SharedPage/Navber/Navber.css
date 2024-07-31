@@ -1,11 +1,42 @@
+.menu li > *:not(ul, .menu-title, details, .btn):active,
+.menu li > *:not(ul, .menu-title, details, .btn).active,
+.menu li > details > summary:active {
+    background: linear-gradient(135deg, #f6c459 0%, #f871c0 100%);
+    color: #FFFF;
+    border-bottom: none;
+}
+
+.menu li > *:not(ul, .menu-title, details, .btn){
+    background-color: #FFFF;
+    border-bottom: 2px solid white;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.menu li > *:not(ul, .menu-title, details, .btn):hover,
+.menu li > *:not(ul, .menu-title, details, .btn):focus{
+    background-color: #FFFF;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(135deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%) 1;
+    border-bottom: 2px solid white;
+    outline: none;
+}
+
+.menu li {
+    margin-left: 1.5px;
+    margin-right: 1.5px;
+}
+
+
 .profile {
     position: relative;
 }
 .profile-name {
     position: absolute;
     visibility: hidden;
-    left: -60px;
-    top: 36px
+    right: 0px;
+    top: 36px;
 }
 .profile:hover .profile-name {
     transition-delay: 300ms;

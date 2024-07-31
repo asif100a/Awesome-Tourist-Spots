@@ -63,23 +63,34 @@ const Navber = () => {
                 {
                     user ?
                         <>
+                            <div className="h-[37px] w-[84px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                <button onClick={handleSingOut} className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Sign out</button>
+                            </div>
+
                             <div className="profile">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <img alt="Tailwind CSS Navbar component" src={userImg} className="" />
                                     </div>
                                 </div>
-                                <ul tabIndex={0} className="profile-name mt-3 z-[1] p-2 shadow bg-base-100 rounded-md w-52">
-                                    <li>{user?.displayName}</li>
+                                <ul tabIndex={0} className="profile-name mt-3 z-[1] p-2 shadow bg-base-100 rounded-md w-36">
+                                    <li><p>{user?.displayName}</p></li>
                                 </ul>
                             </div>
 
-                            <button onClick={handleSingOut} className="btn">Sign out</button>
-
                         </> :
                         <>
-                            <Link to={'/sign_in'} className="btn">Sign In</Link>
-                            <Link to={'/register'} className="btn">Register</Link>
+                            <Link to={'/sign_in'}>
+                                <div className="h-[37px] w-[74.8px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                    <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Sign In</button>
+                                </div>
+                            </Link>
+
+                            <Link to={'/register'}>
+                                <div className="h-[37px] w-[82.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                    <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Register</button>
+                                </div>
+                            </Link>
                         </>
                 }
             </div>

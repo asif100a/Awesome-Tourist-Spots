@@ -5,8 +5,6 @@ import Swal from "sweetalert2";
 
 const MyList = () => {
     const { user } = useAuthContext();
-    console.log(user.email)
-
     const [datas, setDatas] = useState([]);
     const [defaultValue, setDefaultValue] = useState({});
     const [defaultSeason, setDefaultSeason] = useState("");
@@ -66,7 +64,7 @@ const MyList = () => {
         // Set default input if user do not change value
         if (tourist_spot_name === "") {
             tourist_spot_name = defaultValue?.tourist_spot_name;
-            console.log(tourist_spot_name);
+            // console.log(tourist_spot_name);
         }
         if (img_url === "") {
             img_url = defaultValue?.img_url;

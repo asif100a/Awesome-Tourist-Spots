@@ -10,6 +10,12 @@ import 'swiper/css/scrollbar';
 import Reveal from "react-awesome-reveal";
 import { keyframes } from "@emotion/react";
 import { Typewriter } from 'react-simple-typewriter'
+import goldernGateImg from '../assets/Golden Gate Bridge - 22.jpg.jpeg';
+import niagaraImg from '../assets/Niagara-Falls-5698.jpg';
+import notredameImg from '../assets/Notre-Dame-Basilica-_GettyImages-624753712.webp';
+import ibirapueraImg from '../assets/Ibirapuera Park.jpg';
+import mexicoCityImg from '../assets/Mexico City.jpeg';
+import './bannerSlider.css';
 
 const customAnimation = keyframes`
   from {
@@ -37,7 +43,7 @@ const BannerSlider = () => {
                 className='swiper_container rounded-3xl'
             >
                 <SwiperSlide className='relative'>
-                    <img src="https://i.ibb.co/prLDmLS/Golden-Gate-Bridge-22-jpg.webp" alt="Golden Gate Bridge, San Francisco, California" className='w-full h-96 lg:h-[540px] rounded-3xl' />
+                    <img src={goldernGateImg} alt="Golden Gate Bridge, San Francisco, California" className='w-full banner-image rounded-3xl' />
                     <div className="absolute w-full h-full top-0 right-0 left-0 -bottom-6 bg-black bg-opacity-30 rounded-3xl"></div>
                     <div className='absolute top-8 lg:top-28 left-10 lg:left-32 z-10'>
                         <Reveal keyframes={customAnimation}>
@@ -58,7 +64,7 @@ const BannerSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='relative'>
-                    <img src="https://i.ibb.co/VVB853w/AP-17363654872151.webp" alt="Niagara falls" className='w-full h-96 lg:h-[540px] rounded-3xl' />
+                    <img src={niagaraImg} alt="Niagara falls" className='w-full h-96 lg:h-[540px] rounded-3xl' />
                     <div className="absolute w-full h-full top-0 right-0 left-0 -bottom-6 bg-black bg-opacity-30 rounded-3xl"></div>
                     <div className='absolute top-8 lg:top-28 left-10 lg:left-32 z-10'>
                         <Reveal keyframes={customAnimation}>
@@ -79,7 +85,7 @@ const BannerSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='relative'>
-                    <img src="https://i.ibb.co/tLy02CX/Notre-Dame-Basilica-Getty-Images-624753712.webp" alt="Notre-Dame Basilica" className='w-full h-96 lg:h-[540px] rounded-3xl' />
+                    <img src={notredameImg} alt="Notre-Dame Basilica" className='w-full h-96 lg:h-[540px] rounded-3xl' />
                     <div className="absolute w-full h-full top-0 right-0 left-0 -bottom-6 bg-black bg-opacity-30 rounded-3xl"></div>
                     <div className='absolute top-8 lg:top-28 left-10 lg:left-32 z-10'>
                         <Reveal keyframes={customAnimation}>
@@ -100,7 +106,7 @@ const BannerSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='relative'>
-                    <img src="https://i.ibb.co/ZGZbqfc/99.jpg" alt="Ibirapuera Park, São Paulo" className='w-full h-96 lg:h-[540px] rounded-3xl' />
+                    <img src={ibirapueraImg} alt="Ibirapuera Park, São Paulo" className='w-full h-96 lg:h-[540px] rounded-3xl' />
                     <div className="absolute w-full h-full top-0 right-0 left-0 -bottom-6 bg-black bg-opacity-30 rounded-3xl"></div>
                     <div className='absolute top-8 lg:top-28 left-10 lg:left-32 z-10'>
                         <Reveal keyframes={customAnimation}>
@@ -121,7 +127,7 @@ const BannerSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='relative'>
-                    <img src="https://i.ibb.co/zN368BK/1626392873055.jpg" alt="Mexico City, Mexico" className='w-full h-96 lg:h-[540px] rounded-3xl' />
+                    <img src={mexicoCityImg} alt="Mexico City, Mexico" className='w-full h-96 lg:h-[540px] rounded-3xl' />
                     <div className="absolute w-full h-full top-0 right-0 left-0 -bottom-6 bg-black bg-opacity-30 rounded-3xl"></div>
                     <div className='absolute top-8 lg:top-28 left-10 lg:left-32 z-10'>
                         <Reveal keyframes={customAnimation}>
