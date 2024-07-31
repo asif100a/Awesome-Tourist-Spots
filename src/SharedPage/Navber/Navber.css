@@ -1,5 +1,5 @@
 /* Gradient color text */
-.gradient-text-color{
+.gradient-text-color {
     background: linear-gradient(135deg, #f6c459 0%, #f871c0 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -66,7 +66,53 @@
 }
 
 .gradient-border-bottom {
-    border-bottom: 2px solid;
-    border-image: linear-gradient(90deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
-    border-image-slice: 1;
+    /* border: 2px solid transparent; */
+    border: double 2px transparent;
+    background-image: linear-gradient(white, white),
+        linear-gradient(90deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
+    /* border-image-slice: 1; */
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 64px;
+}
+
+/* Navber style */
+.navber-style {
+    position: sticky;
+    z-index: 50;
+    top: 24px;
+    width: 95%;
+    left: 0px;
+    width: 98%;
+    margin: 0px auto;
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+    .navber-style {
+        position: sticky;
+        z-index: 10;
+        top: 16px;
+        left: 0px;
+        width: 98%;
+        margin: 0px auto;
+    }
+
+    .gradient-border-bottom {
+        border-radius: 64px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 1200px) {
+    .navber-style {
+        position: sticky;
+        z-index: 10;
+        top: 16px;
+        left: 0px;
+        width: 98%;
+        margin: 0px auto;
+    }
+
+    .gradient-border-bottom {
+        border-radius: 64px;
+    }
 }

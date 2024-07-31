@@ -33,8 +33,8 @@ const Navber = () => {
     }, [user?.photoURL])
 
     return (
-        <div className="navbar bg-base-100 gradient-border-bottom">
-            <div className="flex flex-row-reverse lg:flex-row lg:navbar-start w-full justify-between">
+        <div className="navbar bg-base-100 gradient-border-bottom py-0 px-0 navber-style">
+            <div className="flex flex-row-reverse lg:flex-row lg:navbar-start w-full justify-between pl-6">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -50,8 +50,8 @@ const Navber = () => {
                         }
                     </ul>
                 </div>
-                <Link to={'/'} className="text-3xl gradient-text-color font-semibold flex justify-center items-center gap-2">
-                    <img src={logo} alt="Logo" className="w-16 h-16" />
+                <Link to={'/'} className="text-2xl md:text-3xl gradient-text-color font-semibold flex justify-center items-center gap-2">
+                    <img src={logo} alt="Logo" className="w-12 h-12 rounded-l-lg" />
                     <span>Awesome Tourist Spots</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -59,7 +59,7 @@ const Navber = () => {
                     {navLinks}
                 </ul>
             </div>
-            <div className="navbar-end space-x-3 hidden lg:flex">
+            <div className="navbar-end space-x-3 hidden lg:flex pr-6">
                 {
                     user ?
                         <>
