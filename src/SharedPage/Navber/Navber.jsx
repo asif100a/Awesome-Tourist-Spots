@@ -33,7 +33,7 @@ const Navber = () => {
     }, [user?.photoURL])
 
     return (
-        <div className="navbar bg-base-100 border">
+        <div className="navbar bg-base-100 gradient-border-bottom">
             <div className="flex flex-row-reverse lg:flex-row lg:navbar-start w-full justify-between">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -50,7 +50,7 @@ const Navber = () => {
                         }
                     </ul>
                 </div>
-                <Link to={'/'} className="text-2xl font-medium flex justify-center items-center gap-2">
+                <Link to={'/'} className="text-3xl gradient-text-color font-semibold flex justify-center items-center gap-2">
                     <img src={logo} alt="Logo" className="w-16 h-16" />
                     <span>Awesome Tourist Spots</span></Link>
             </div>
@@ -67,8 +67,8 @@ const Navber = () => {
                                 <button onClick={handleSingOut} className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Sign out</button>
                             </div>
 
-                            <div className="profile">
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="profile w-fit h-fit rounded-full flex justify-center items-center p-[2px] bg-white transition-background duration-1000 hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0]">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle h-[44px] min-h-0 w-[44px] bg-gradient-to-br from-[#f6c459] to-[#f871c0] avatar">
                                     <div className="w-10 rounded-full">
                                         <img alt="Tailwind CSS Navbar component" src={userImg} className="" />
                                     </div>
