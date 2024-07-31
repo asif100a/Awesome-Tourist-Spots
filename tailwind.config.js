@@ -8,6 +8,9 @@ export default {
     extend: {
       transitionProperty: {
         'background': 'background',
+      },
+      fontFamily: {
+        'open-sans': '"Open Sans", sans-serif'
       }
     },
   },

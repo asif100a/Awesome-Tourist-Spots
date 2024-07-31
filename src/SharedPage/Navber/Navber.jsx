@@ -50,7 +50,7 @@ const Navber = () => {
                         }
                     </ul>
                 </div>
-                <Link to={'/'} className="text-2xl md:text-3xl gradient-text-color font-semibold flex justify-center items-center gap-2">
+                <Link to={'/'} className="text-2xl md:text-3xl gradient-text-color font-semibold font-open-sans flex justify-center items-center gap-2">
                     <img src={logo} alt="Logo" className="w-12 h-12 rounded-l-lg" />
                     <span>Awesome Tourist Spots</span></Link>
             </div>
@@ -63,7 +63,7 @@ const Navber = () => {
                 {
                     user ?
                         <>
-                            <div className="h-[37px] w-[84px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                            <div className="h-[37px] w-[86.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
                                 <button onClick={handleSingOut} className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Sign out</button>
                             </div>
 
@@ -81,13 +81,13 @@ const Navber = () => {
                         </> :
                         <>
                             <Link to={'/sign_in'}>
-                                <div className="h-[37px] w-[74.8px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                <div className="h-[37px] w-[76px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
                                     <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Sign In</button>
                                 </div>
                             </Link>
 
                             <Link to={'/register'}>
-                                <div className="h-[37px] w-[82.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                <div className="h-[37px] w-[86.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
                                     <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Register</button>
                                 </div>
                             </Link>
