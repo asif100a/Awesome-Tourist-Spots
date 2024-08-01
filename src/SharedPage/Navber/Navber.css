@@ -32,13 +32,6 @@
     outline: none;
 }
 
-/* .menu li>*:not(ul, .menu-title, details, .btn):hover{
-    background: linear-gradient(135deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-} */
-
 .menu li {
     margin-left: 1.5px;
     margin-right: 1.5px;

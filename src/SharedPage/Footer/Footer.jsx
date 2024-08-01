@@ -2,17 +2,18 @@ import webLogo from "../../assets/Add a heading (1).png";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { SiInstagram } from "react-icons/si";
+import "./footer.css";
 
 const Footer = () => {
     return (
-        <footer className="w-full text-gray-700 bg-gray-100 body-font mt-12">
+        <footer className="w-full text-gray-700 bg-gray-100 footer-border mt-12">
             <div
                 className="container flex flex-col flex-wrap px-5 py-16 pb-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
                 <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-24 lg:mx-0 md:text-left mb-10 lg:mb-0">
                     <a className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
                         <img src={webLogo} alt="Website logo" className="w-32 h-32 " />
                     </a>
-                   <h1 className="mt-3 text-2xl font-semibold">Awesome Tourist Spots</h1>
+                   <h1 className="mt-3 text-2xl font-semibold gradient-text-color">Awesome Tourist Spots</h1>
                 </div>
                 <div className="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left">
                     <div className="w-full px-4 lg:w-1/4 md:w-1/2">
@@ -74,9 +75,9 @@ const Footer = () => {
                     
                 </div>
             </div>
-            <div className="bg-gray-300">
+            <div className="bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-b-[64px]">
                 <div className="container px-5 py-4 mx-auto">
-                    <p className="text-sm text-gray-700 capitalize text-center">© 2024 All rights reserved by Awesome Tourist Spots</p>
+                    <p className="text-sm text-white capitalize text-center">© 2024 All rights reserved by Awesome Tourist Spots</p>
                 </div>
             </div>
         </footer>
