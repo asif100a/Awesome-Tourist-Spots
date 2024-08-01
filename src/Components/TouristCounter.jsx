@@ -8,7 +8,7 @@ const TouristCounter = () => {
     return (
         <section className='mt-20'>
             <div className="text-border w-fit mx-auto">
-                <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[36rem] mx-auto px-2 py-3 capitalize'>Our customers, destinations and tours-</h1>
+                <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[36rem] mx-auto px-8 py-3 capitalize'>Our customers, destinations and tours</h1>
             </div>
             <div className='background-image flex justify-center items-center mt-8'>
                 <div className='content count-border mx-3'>

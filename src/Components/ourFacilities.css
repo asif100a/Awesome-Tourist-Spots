@@ -1,0 +1,17 @@
+.text-border, .btn-border{
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white),
+    linear-gradient(135deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 24px;
+}
+
+.round-border{
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white),
+    linear-gradient(135deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 9999px;
+}

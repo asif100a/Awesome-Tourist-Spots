@@ -4,8 +4,6 @@ import OurFacilities from "../../Components/OurFacilities";
 import TouristCounter from "../../Components/TouristCounter";
 import TouristSpot from "../../Components/TouristSpot";
 import './home.css'
-// Import background image
-import backgroundImage from "../../assets/awesome-rainbow-mountain.jpg";
 
 const Home = () => {
     return (
