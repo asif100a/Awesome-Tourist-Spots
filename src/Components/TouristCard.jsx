@@ -8,7 +8,7 @@ const TouristCard = ({ spotCard }) => {
 
     return (
         <div className='relative'>
-            <div className="max-w-xs rounded-[22px] shadow-md hover:shadow-lg transition-transform transform hover:scale-[1.03] dark:bg-gray-50 dark:text-gray-800 card-border mt-6">
+            <div className="w-auto mx-3 md:max-w-xs rounded-[22px] shadow-md hover:shadow-lg transition-transform transform hover:scale-[1.03] dark:bg-gray-50 dark:text-gray-800 card-border mt-6">
                 <img src={img_url} alt="Spot image" className="object-cover object-center w-full rounded-t-[22px] h-56 dark:bg-gray-500" />
                 <div className="flex flex-col justify-between p-6 space-y-8">
                     <div className="space-y-2">

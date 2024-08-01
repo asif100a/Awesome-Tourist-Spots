@@ -21,7 +21,7 @@ const TouristSpot = () => {
     return (
         <div className="mt-16 relative">
             <div className="text-border w-fit mx-auto">
-                <h1 className="text-3xl md:text-4xl font-bold text-center w-auto lg:w-[36rem] mx-auto px-1 py-3 capitalize">Find your tours from most popular tourist spots</h1>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[36rem] mx-auto px-1 py-3 capitalize">Find your tours from most popular tourist spots</h1>
             </div>
             <p className="text-center w-[95%] lg:w-[48rem] mx-auto mt-6">You can choose your tours to go {america} most popular tourist spots. Are you ready to embark on an unforgettable journey through some of {america} most iconic destinations? Look no further! Our curated selection of tours offers an array of experiences tailored to suit every {travelers} taste,</p>
 

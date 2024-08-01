@@ -79,7 +79,7 @@
 /* Navber style */
 .navber-style {
     position: sticky;
-    z-index: 50;
+    z-index: 10;
     top: 24px;
     width: 95%;
     left: 0px;
