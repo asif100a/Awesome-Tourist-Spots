@@ -75,8 +75,8 @@ const Footer = () => {
                     
                 </div>
             </div>
-            <div className="px-0 -mb-[1px]">
-                <div className="container w-screen py-8 lg:py-4 bg-gradient-to-br from-[#f6c459] to-[#f871c0]">
+            <div className="px-0 -mb-[1px] bg-gradient-to-br from-[#f6c459] to-[#f871c0]">
+                <div className="py-8 lg:py-4 ">
                     <p className="text-sm text-white capitalize text-center w-56 md:w-72 lg:w-auto mx-auto">© 2024 All rights reserved by Awesome Tourist Spots</p>
                 </div>
             </div>
