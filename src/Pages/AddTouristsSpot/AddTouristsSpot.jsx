@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
 import logo from "../../assets/Add a heading (1).png";
 import "./addTourist.css";
+import useAuthContext from "../../Hooks/useAuthContext";
 
 const AddTouristsSpot = () => {
     const spots = "spot's";
+    const {user} = useAuthContext();
 
     const {
         register,
@@ -94,6 +96,8 @@ const AddTouristsSpot = () => {
                                         className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0] mt-2"
                                         type="email"
                                         name="email"
+                                        value={user?.email}
+                                        readOnly={true}
                                         placeholder="Enter your email"
                                         {...register("email", { required: true })}
                                     />

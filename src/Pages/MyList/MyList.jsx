@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import "./myList.css";
 
 const MyList = () => {
     const { user } = useAuthContext();
@@ -10,13 +11,14 @@ const MyList = () => {
     const [defaultSeason, setDefaultSeason] = useState("");
     const [defaultTravelTime, setDefaultTravelTime] = useState("");
     const [updateId, setUpdateId] = useState(null);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         fetch(`https://assignment-10-server-side-lemon.vercel.app/myTouristSpot/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setDatas(data);
+                setLoader(false);
             })
     }, [user?.email]);
 
@@ -171,8 +173,10 @@ const MyList = () => {
 
 
     return (
-        <div className="relative h-screen">
-            <h1>My List section</h1>
+        <section className="relative h-screen">
+            <div className="text-center text-border mx-auto w-fit mb-6">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[16rem] mx-auto px-8 py-3 capitalize">My lists</h1>
+            </div>
 
             <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center z-10">
                 <div className="modal-box w-[32rem]">
@@ -282,8 +286,8 @@ const MyList = () => {
                 </div>
             </div>
 
-            <div>
-                <table className="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
@@ -291,52 +295,56 @@ const MyList = () => {
                             <th>Traveler</th>
                             <th>Spot name</th>
                             <th>Total price</th>
-                            <th></th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="gradient-border-top">
+                        {
+                            loader && <tr>
+                                <td colSpan={6}>
+                                    <div className="flex justify-center items-center h-40">
+                                        <span className="loading loading-ring loading-lg"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                         {
                             datas.map(data => <>
-                                <tr className="overflow-x-hidden" key={data._id}>
+                                <tr key={data._id}>
 
                                     {/* row 1 */}
                                     <td>
-
                                         <div className="lg:avatar">
-                                            <div className="mask rounded-sm w-10 md:w-16 h-10 md:h-16">
+                                            <div className="mask rounded-sm w-16 h-16 pt-3">
                                                 <img src={data.img_url} alt="Tourist spot" />
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="flex items-center lg:gap-3">
-                                            <div className="w-10 lg:w-auto">
-                                                <div className="font-bold">{data?.name}</div>
-                                                <div className="text-sm opacity-50 hidden md:flex">{data?.email}</div>
-                                            </div>
+                                        <div>
+                                            <p className="font-semibold text-">{data?.name}</p>
+                                            <p className="bg-gradient-to-br from-[#f6c459] to-[#f871c0] text-white text-xs px-2 rounded-full w-fit">{data?.email}</p>
                                         </div>
                                     </td>
                                     <td>
-                                        {data?.tourist_spot_name}
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">{data?.location}</span>
-                                    </td>
-                                    <td>{data?.average_cost}</td>
-                                    <td className="hidden md:flex">
-                                        {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                        <button onClick={() => handleShowModal(data)} className="btn btn-sm" >Update</button>
-
-                                    </td>
-                                    <td className="hidden md:flex">
-                                        <button onClick={() => handleDelete(data?._id)} className="btn btn-sm">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr className="flex md:hidden">
-                                    <td>
-                                        <button onClick={() => handleShowModal(data)} className="btn btn-sm" >Update</button>
+                                        <div className="w-40 lg:w-auto">
+                                            <p>{data?.tourist_spot_name}</p>
+                                            <p className="bg-gradient-to-br from-[#f6c459] to-[#f871c0] text-white text-xs px-2 rounded-full w-fit">{data?.location}</p>
+                                        </div>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDelete(data?._id)} className="btn btn-sm">Delete</button>
+                                        <p>{data?.average_cost}</p>
+                                    </td>
+                                    <td>
+                                        <div onClick={() => handleShowModal(data)} className="h-fit w-fit p-[1.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                            <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Update</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div onClick={() => handleDelete(data?._id)} className="h-fit w-fit p-[1.5px] flex justify-center items-center bg-gradient-to-br from-[#f6c459] to-[#f871c0] rounded-[9px]">
+                                            <button className="btn h-[34px] min-h-[34px] px-[14px] bg-white outline-none border-none shadow-none hover:bg-gradient-to-br hover:from-[#f6c459] hover:to-[#f871c0] hover:text-white">Delete</button>
+                                        </div>
                                     </td>
                                 </tr>
                             </>)
@@ -348,7 +356,7 @@ const MyList = () => {
 
             </div>
 
-        </div>
+        </section>
     );
 };
 
