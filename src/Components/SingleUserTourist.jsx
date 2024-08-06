@@ -10,13 +10,13 @@ const SingleUserTourist = ({ data }) => {
     const { _id, img_url, tourist_spot_name, average_cost, total_visitor, season, travel_time } = data;
 
     return (
-        <div className="p-0 card-border">
+        <div className="p-0 card-border mx-3">
             <div className="max-w-xs p-6 dark:bg-gray-50 dark:text-gray-900">
-                <img src={img_url} alt="Tourist spot image" className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
-                <div className="mt-6 mb-2">
-                    <h2 className="text-xl text-gray-500 font-bold tracking-wide flex flex-col">Tourist spot name: <span className="font-semibold text-2xl text-gray-800">{tourist_spot_name}</span></h2>
+                <img src={img_url} alt="Tourist spot image" className="object-cover object-center w-full rounded-lg h-60 md:h-64 lg:h-72 dark:bg-gray-500" />
+                <div className="mt-3">
+                    <h2 className="tracking-wide font-semibold text-2xl text-gray-800">{tourist_spot_name}</h2>
                 </div>
-                <ul className="text-base text-gray-800 space-y-3 mb-6 mt-6">
+                <ul className="text-base text-gray-800 space-y-3 mb-5 mt-5">
 
                     <li className="mb-2 flex items-center">
                         <GiReceiveMoney className="mr-2 text-blue-500 w-6 h-6" />

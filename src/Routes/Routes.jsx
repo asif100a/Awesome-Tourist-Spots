@@ -30,8 +30,7 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute><AddTouristsSpot /></PrivateRoute>
             }, {
                 path: '/all_tourists_spot',
-                element: <AllTouristsSpot />,
-                loader: () => fetch('https://assignment-10-server-side-lemon.vercel.app/addTouristSpot')
+                element: <AllTouristsSpot />
             }, {
                 path: '/all_tourist_details/:id',
                 element: <PrivateRoute><AllTouristDetails /></PrivateRoute>,

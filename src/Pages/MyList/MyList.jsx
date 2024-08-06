@@ -125,7 +125,7 @@ const MyList = () => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success text-white mx-2",
-                cancelButton: "btn btn-danger bg-red-600 text-white mx-2"
+                cancelButton: "btn btn-danger bg-red-500 hover:bg-red-600 text-white mx-2"
             },
             buttonsStyling: false
         });
@@ -178,110 +178,113 @@ const MyList = () => {
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[16rem] mx-auto px-8 py-3 capitalize">My lists</h1>
             </div>
 
-            <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center z-10">
-                <div className="modal-box w-[32rem]">
-                    <h3 className="font-bold text-2xl text-center pb-3">Update your tourist spot</h3>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="tourist_spot_name">Tourist spot name</label>
-                                <input
-                                    type="text"
-                                    name="tourist_spot_name"
-                                    defaultValue={defaultValue.tourist_spot_name}
-                                    className="input input-bordered input-secondary w-full "
-                                    {...register("tourist_spot_name")}
-                                />
+            <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center items-center z-10">
+                <div className="form-border h-fit">
+                    <div className="p-0 modal-box shadow-none w-[32rem]">
+                        <h3 className="font-bold text-2xl text-center">Update your tourist spot</h3>
+                        <form onSubmit={handleSubmit(onSubmit)} className="p-3">
+                            <div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="tourist_spot_name">Tourist spot name</label>
+                                    <input
+                                        type="text"
+                                        name="tourist_spot_name"
+                                        defaultValue={defaultValue.tourist_spot_name}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("tourist_spot_name")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="img_url">Touist spot image url</label>
+                                    <input
+                                        type="text"
+                                        name="img_url"
+                                        defaultValue={defaultValue.img_url}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("img_url")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="location">Tourist spot location</label>
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        defaultValue={defaultValue.location}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("location")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="country_name">Country name</label>
+                                    <input
+                                        type="text"
+                                        name="country_name"
+                                        defaultValue={defaultValue.country_name}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("country_name")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="average_cost">Average cost</label>
+                                    <input
+                                        type="text"
+                                        name="average_cost"
+                                        defaultValue={defaultValue.average_cost}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("average_cost")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="total_visitor">Total visitors per year</label>
+                                    <input
+                                        type="text"
+                                        name="total_visitor"
+                                        defaultValue={defaultValue.total_visitor}
+                                        className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        {...register("total_visitor")}
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <h5>Choose a season</h5>
+                                    <select name="season" value={defaultSeason} onChange={handleDefaultSeason} className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                    >
+                                        <option value={'summer'}>Summer</option>
+                                        <option value={'autumn'}>Autumn</option>
+                                        <option value={'winter'}>Winter</option>
+                                        <option value={'spring'}>Spring</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <h5>Choose a travel time</h5>
+                                    <select name="travel_time" value={defaultTravelTime} onChange={handleDefaultTravelTime} className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                    >
+                                        <option value={'7_days'}>7 days</option>
+                                        <option value={'10_days'}>10 days</option>
+                                        <option value={'15_days'}>15 days</option>
+                                        <option value={'18_days'}>18 days</option>
+                                        <option value={'21_days'}>21 days</option>
+                                        <option value={'1_month'}>1 month</option>
+                                        <option value={'2_months'}>2 months</option>
+                                        <option value={'3_months'}>3 months</option>
+                                    </select>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-3">
+                                    <label htmlFor="description">Short description</label>
+                                    <textarea
+                                        name="description"
+                                        className="w-full h-36 px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0]"
+                                        defaultValue={defaultValue.description}
+                                        {...register("description")}
+                                    ></textarea>
+                                </div>
+                                <div className="mt-6 flex justify-between">
+                                    <button type="submit" className="btn w-32 bg-green-500 hover:bg-green-600 text-white">Update</button>
+
+                                    {/* if there is a button in form, it will close the modal */}
+                                    <button type="button" onClick={handleRemoveModal} className="btn bg-red-500 hover:bg-red-700 text-white">Exit</button>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="img_url">Touist spot image url</label>
-                                <input
-                                    type="text"
-                                    name="img_url"
-                                    defaultValue={defaultValue.img_url}
-                                    className="input input-bordered input-primary w-full "
-                                    {...register("img_url")}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="location">Tourist spot location</label>
-                                <input
-                                    type="text"
-                                    name="location"
-                                    defaultValue={defaultValue.location}
-                                    className="input input-bordered input-accent w-full "
-                                    {...register("location")}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="country_name">Country name</label>
-                                <input
-                                    type="text"
-                                    name="country_name"
-                                    defaultValue={defaultValue.country_name}
-                                    className="input input-bordered input-warning w-full "
-                                    {...register("country_name")}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="average_cost">Average cost</label>
-                                <input
-                                    type="text"
-                                    name="average_cost"
-                                    defaultValue={defaultValue.average_cost}
-                                    className="input input-bordered input-info w-full "
-                                    {...register("average_cost")}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="total_visitor">Total visitors per year</label>
-                                <input
-                                    type="text"
-                                    name="total_visitor"
-                                    defaultValue={defaultValue.total_visitor}
-                                    className="input input-bordered input-success w-full "
-                                    {...register("total_visitor")}
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <h5>Choose a season</h5>
-                                <select name="season" value={defaultSeason} onChange={handleDefaultSeason} className="select select-bordered w-full">
-                                    <option value={'summer'}>Summer</option>
-                                    <option value={'autumn'}>Autumn</option>
-                                    <option value={'winter'}>Winter</option>
-                                    <option value={'spring'}>Spring</option>
-                                </select>
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <h5>Choose a travel time</h5>
-                                <select name="travel_time" value={defaultTravelTime} onChange={handleDefaultTravelTime} className="select select-bordered w-full">
-                                    <option value={'7_days'}>7 days</option>
-                                    <option value={'10_days'}>10 days</option>
-                                    <option value={'15_days'}>15 days</option>
-                                    <option value={'18_days'}>18 days</option>
-                                    <option value={'21_days'}>21 days</option>
-                                    <option value={'1_month'}>1 month</option>
-                                    <option value={'2_months'}>2 months</option>
-                                    <option value={'3_months'}>3 months</option>
-                                </select>
-                            </div>
-                            <div className="flex flex-col gap-2 mt-3">
-                                <label htmlFor="description">Short description</label>
-                                <textarea
-                                    name="description"
-                                    className="textarea textarea-bordered"
-                                    defaultValue={defaultValue.description}
-                                    {...register("description")}
-                                ></textarea>
-                            </div>
-                            <div className="text-center mt-3">
-                                <button className="btn w-32 bg-green-500 text-white">Update</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div className="text-center mt-3">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button onClick={handleRemoveModal} className="btn bg-red-600 text-white">Exit</button>
+                        </form>
                     </div>
                 </div>
             </div>

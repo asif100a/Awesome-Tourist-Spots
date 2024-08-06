@@ -20,3 +20,13 @@
     height: 2px;
     background: linear-gradient(135deg, #f6c459 0%, #f871c0 100%);
 }
+
+.form-border{
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white),
+    linear-gradient(135deg, rgb(246, 196, 89) 0%, rgb(248, 113, 192) 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 24px;
+    overflow-y: auto;
+}

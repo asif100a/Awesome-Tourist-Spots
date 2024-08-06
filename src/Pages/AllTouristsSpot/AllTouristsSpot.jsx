@@ -1,15 +1,21 @@
 import { useLoaderData } from "react-router-dom";
 import SingleUserTourist from "../../Components/SingleUserTourist";
 import "./allTouristSpots.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AllTouristsSpot = () => {
-    const touristData = useLoaderData();
-    const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+    const [touristData, setTouristData] = useState([]);
+
+    // Fetch the data 
+    useEffect(() => {
+        fetch('https://assignment-10-server-side-lemon.vercel.app/addTouristSpot')
+            .then(res => res.json())
+            .then(data => setTouristData(data));
+    }, []);
 
     // Toggle the dirrection
     const toggleDropDown = () => {
-        setIsOpenDropDown(true);
+        // setIsOpenDropDown(true);JJ
     };
 
     return (
@@ -35,7 +41,32 @@ const AllTouristsSpot = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-fit mx-auto gap-6 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-fit min-h-[292px] mx-auto gap-6 mt-6">
+                {
+                    (touristData.length === 0) && (
+                        <div className="w-full mx-auto col-span-3 h-full flex justify-center items-center">
+                            <div aria-label="Loading..." role="status" className="flex items-center space-x-2">
+                                <svg className="h-20 w-20 animate-spin stroke-gray-500" viewBox="0 0 256 256">
+                                    <line x1="128" y1="32" x2="128" y2="64" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
+                                    <line x1="195.9" y1="60.1" x2="173.3" y2="82.7" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="24"></line>
+                                    <line x1="224" y1="128" x2="192" y2="128" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24">
+                                    </line>
+                                    <line x1="195.9" y1="195.9" x2="173.3" y2="173.3" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="24"></line>
+                                    <line x1="128" y1="224" x2="128" y2="192" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24">
+                                    </line>
+                                    <line x1="60.1" y1="195.9" x2="82.7" y2="173.3" strokeLinecap="round" strokeLinejoin="round"
+                                        strokeWidth="24"></line>
+                                    <line x1="32" y1="128" x2="64" y2="128" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
+                                    <line x1="60.1" y1="60.1" x2="82.7" y2="82.7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24">
+                                    </line>
+                                </svg>
+                                <span className="text-4xl font-medium text-gray-500">Loading...</span>
+                            </div>
+                        </div>
+                    )
+                }
                 {
                     touristData.map(data => <SingleUserTourist key={data._id} data={data}></SingleUserTourist>)
                 }
