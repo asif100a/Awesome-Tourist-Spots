@@ -154,7 +154,7 @@ const AddTouristsSpot = () => {
                                         <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Average Cost</label>
                                         <input
                                             className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0] mt-2"
-                                            type="text"
+                                            type="number"
                                             name="average_cost"
                                             placeholder="Write your average cost"
                                             {...register("average_cost", { required: true })}
@@ -202,7 +202,7 @@ const AddTouristsSpot = () => {
                         <div className="w-full md:w-1/2 mb-4 px-0 md:px-3">
                             <h5 className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Total visitors per year</h5>
                             <input
-                                type="text"
+                                type="number"
                                 name="total_visitor"
                                 placeholder="Write total visitors per year"
                                 className="w-full px-3 py-2 border border-[#f6c459] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f871c0] mt-2"
