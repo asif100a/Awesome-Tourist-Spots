@@ -8,8 +8,6 @@ import './home.css'
 const Home = () => {
     return (
         <div>
-
-
             <BannerSlider />
 
             <div className="mt-16">

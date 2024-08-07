@@ -9,7 +9,7 @@ const TouristSpot = () => {
 
 
     useEffect(() => {
-        fetch('https://assignment-10-server-side-lemon.vercel.app/touristSpotCards')
+        fetch(`${import.meta.env.VITE_URL}/touristSpotCards`)
             .then(res => res.json())
             .then(data => {
                 setSpotCards(data);

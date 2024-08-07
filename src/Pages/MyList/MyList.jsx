@@ -14,7 +14,7 @@ const MyList = () => {
     const [loader, setLoader] = useState(true);
 
     useEffect(() => {
-        fetch(`https://assignment-10-server-side-lemon.vercel.app/myTouristSpot/${user?.email}`)
+        fetch(`${import.meta.env.VITE_URL}/myTouristSpot/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setDatas(data);
@@ -96,7 +96,7 @@ const MyList = () => {
         console.log(userTouristSpot)
 
         // Send data to the backend
-        fetch(`https://assignment-10-server-side-lemon.vercel.app/addTouristSpot/${updateId}`, {
+        fetch(`${import.meta.env.VITE_URL}/addTouristSpot/${updateId}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -139,7 +139,7 @@ const MyList = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://assignment-10-server-side-lemon.vercel.app/addTouristSpot/${id}`, {
+                fetch(`${import.meta.env.VITE_URL}/addTouristSpot/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -178,7 +178,7 @@ const MyList = () => {
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center w-auto lg:w-[16rem] mx-auto px-8 py-3 capitalize">My lists</h1>
             </div>
 
-            <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center items-center z-10">
+            <div ref={textRef} className="hidden absolute w-full h-full top-0 flex justify-center items-center z-[5]">
                 <div className="form-border h-fit">
                     <div className="p-0 modal-box shadow-none w-[32rem]">
                         <h3 className="font-bold text-2xl text-center">Update your tourist spot</h3>

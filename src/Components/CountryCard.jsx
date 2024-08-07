@@ -16,7 +16,7 @@ const CountryCard = () => {
     const [countryDatas, setCountryDatas] = useState([]);
 
     useEffect(() => {
-        fetch('https://assignment-10-server-side-lemon.vercel.app/countryCards')
+        fetch(`${import.meta.env.VITE_URL}/countryCards`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch');

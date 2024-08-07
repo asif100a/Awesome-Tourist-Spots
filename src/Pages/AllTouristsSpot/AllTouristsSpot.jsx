@@ -1,21 +1,26 @@
-import { useLoaderData } from "react-router-dom";
 import SingleUserTourist from "../../Components/SingleUserTourist";
 import "./allTouristSpots.css";
 import { useEffect, useState } from "react";
 
 const AllTouristsSpot = () => {
     const [touristData, setTouristData] = useState([]);
+    const [sortValue, setSortValue] = useState('');
 
     // Fetch the data 
     useEffect(() => {
-        fetch('https://assignment-10-server-side-lemon.vercel.app/addTouristSpot')
+        fetch(`${import.meta.env.VITE_URL}/addTouristSpot?sort=${sortValue}`)
             .then(res => res.json())
             .then(data => setTouristData(data));
-    }, []);
+    }, [sortValue]);
+
+    // Handle the sort functionality
+    const handleSortValue = (value) => {
+        setSortValue(value);
+    };
 
     // Toggle the dirrection
     const toggleDropDown = () => {
-        // setIsOpenDropDown(true);JJ
+        // setIsOpenDropDown(true);
     };
 
     return (
@@ -35,8 +40,9 @@ const AllTouristsSpot = () => {
                         </button>
                     </div>
                     <ul tabIndex={0} className="dropdown-content top-14 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Low-High</a></li>
-                        <li><a>High-Low</a></li>
+                        <li><a onClick={() => setSortValue('low')} className={`${sortValue === 'low' && 'bg-gradient-to-br from-[#f6c459] to-[#f871c0] text-white'}`}>Low-High</a></li>
+
+                        <li><a onClick={() => setSortValue('high')} className={`${sortValue === 'high' && 'bg-gradient-to-br from-[#f6c459] to-[#f871c0] text-white'}`}>High-Low</a></li>
                     </ul>
                 </div>
             </div>

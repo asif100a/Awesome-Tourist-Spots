@@ -12,7 +12,7 @@ const SingleUserTourist = ({ data }) => {
     return (
         <div className="p-0 card-border mx-3">
             <div className="max-w-xs p-6 dark:bg-gray-50 dark:text-gray-900">
-                <img src={img_url} alt="Tourist spot image" className="object-cover object-center w-full rounded-lg h-60 md:h-64 lg:h-72 dark:bg-gray-500" />
+                <img src={img_url} alt="Tourist spot image" className="object-cover object-center w-full rounded-xl h-60 md:h-64 lg:h-72 dark:bg-gray-500" />
                 <div className="mt-3">
                     <h2 className="tracking-wide font-semibold text-2xl text-gray-800">{tourist_spot_name}</h2>
                 </div>
